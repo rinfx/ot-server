@@ -20,7 +20,6 @@ public class OtlpTraceService extends TraceServiceGrpc.TraceServiceImplBase {
     private void start(String[] args) throws IOException, InterruptedException {
         int port = 10802;
         Server server = ServerBuilder.forPort(port)
-//                .useTransportSecurity(new File("/Users/liuxiaorui/Documents/codes/self-certs/certificate.crt"), new File("/Users/liuxiaorui/Documents/codes/self-certs/server.pem"))
                 .addService(this)
                 .build();
         server.start();
