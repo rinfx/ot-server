@@ -7,9 +7,12 @@ import trace_server_pb2_grpc
 class Server(trace_server_pb2_grpc.TraceServiceServicer):
 
     def Export(self, request, context):
-        print("test")
         print(request)
-        return "OK"
+        return trace_server_pb2.ExportTraceServiceResponse(
+            partial_success = trace_server_pb2.ExportTracePartialSuccess(
+                rejected_spans = 0
+            )
+        )
     
 if __name__ == '__main__':
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
